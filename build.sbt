@@ -2,7 +2,7 @@ name := "scalaj-time"
 
 organization := "org.scalaj"
 
-version := "0.5-SNAPSHOT"
+version := "0.5"
 
 crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.5")
 
