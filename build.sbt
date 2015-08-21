@@ -2,19 +2,17 @@ name := "scalaj-time"
 
 organization := "org.scalaj"
 
-version := "0.6-SNAPSHOT"
+version := "0.8"
 
-crossScalaVersions := Seq("2.9.3", "2.10.4", "2.11.5")
+crossScalaVersions := Seq("2.10.5", "2.11.7")
 
 scalacOptions <++= scalaVersion map { (v: String) => 
-  if (v.trim.startsWith("2.1"))
-    Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds")
-  else
-    Seq("-deprecation", "-unchecked")
+  Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds")
 }
 
 libraryDependencies ++= Seq(
-  "joda-time" % "joda-time" % "1.6.2"
+  "joda-time" % "joda-time" % "2.2",
+  "org.joda" % "joda-convert" % "1.2"
 )
 
 publishTo <<= version { (v: String) =>
