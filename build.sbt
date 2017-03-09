@@ -4,10 +4,19 @@ organization := "org.scalaj"
 
 version := "0.8"
 
-crossScalaVersions := Seq("2.10.5", "2.11.7")
+crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
 
-scalacOptions <++= scalaVersion map { (v: String) => 
+javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
+
+scalacOptions ++= {
   Seq("-deprecation", "-unchecked", "-feature", "-language:implicitConversions", "-language:higherKinds")
+}
+
+scalacOptions ++= {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, 12)) => Seq()
+    case _ => Seq("-target:jvm-1.7")
+  }
 }
 
 libraryDependencies ++= Seq(
